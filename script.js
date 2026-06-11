@@ -21,24 +21,24 @@ const nextBtn = document.querySelector("#nextBtn");
 
 const fotos = [
   {
-  foto: "imagens/Foto Casal1.jpg",
-  mensagem: "Cada detalhe seu deixa meu mundo mais bonito e meu coração mais em paz.",
+  foto: "imagens/foto3.jpeg",
+  mensagem: "☀️VC e meu sol! Mais por que sol vc se pergunta pq vc e a única luz acima da minha cabeça durante o dia todo me fazendo lembrar q amor e quente e intenso",
 },
 {
-  foto: "imagens/Foto Casal2.jpg",
-  mensagem: "Meu carinho por você cresce nos pequenos momentos, nos sorrisos e nos sonhos que a gente guarda.",
+  foto: "imagens/foto4.jpeg",
+  mensagem: "msm com nuvens 🌦️chuvas vento vc sempre está lá clareando meu dia me fazendo lembrar q nada e impossível se ainda tem o sol para poder achar os erros e consertar de uma vez por todas",
 },
 {
-  foto: "imagens/Foto Casal3.jpg",
-  mensagem: "Você é aquele amor que ilumina até os dias mais simples, como se tudo ganhasse um brilho novo.",
+  foto: "imagens/foto5.jpeg",
+  mensagem: "mas como meu amor é tão grande por vc ele não fica apenas no dia no sol ele se estende pela noite refletindo na lua, como se fosse um sono confortável e um sonho🌝",
 },
 {
-  foto: "imagens/Foto Esposa.jpg",
-  mensagem: "Se eu pudesse escrever uma cartinha todos os dias, em todas elas haveria o mesmo segredo: eu amo você.",
+  foto: "imagens/foto1.jpeg",
+  mensagem: "😴não apenas qualquer sonho mas sim um sonho q nem a lua refletindo todos nosso momentos me fazendo sentir cada vez mais sdd me fazendo querer te ver e te amar ainda mais pensar q quando acordar dnv não quero perder mais 1seg se quer sem ser ao seu lado juntos💞",
 },
 {
-  foto: "imagens/Foto Marido.jpg",
-  mensagem: "Nosso amor tem esse jeitinho de abraço demorado: acolhe, acalma e faz o coração sorrir.",
+  foto: "imagens/foto2.jpeg",
+  mensagem: "vc é meu sol e eu não tenho medo de me queimar abraçando e beijando o sol, eu só quero arrumar todos os erros me arrependi profundamente pq eu realmente te amo eu me achava q estava te ensinando a amar mas qm realmente me ensinou foi VC, EU TE AMOOO🙈💘",
 },
 ];
 
