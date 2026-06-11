@@ -1,0 +1,552 @@
+:root {
+  color-scheme: dark;
+  --bg: #180713;
+  --rose: #ff4f86;
+  --pink: #ff8ab3;
+  --wine: #601534;
+  --light: #fff2f7;
+  --soft: rgba(255, 255, 255, 0.72);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  min-height: 100dvh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  font-family: Arial, Helvetica, sans-serif;
+  background:
+    radial-gradient(circle at 18% 16%, rgba(255, 79, 134, 0.26), transparent 28rem),
+    radial-gradient(circle at 80% 10%, rgba(255, 176, 204, 0.2), transparent 24rem),
+    linear-gradient(140deg, #180713 0%, #3b0d24 48%, #120610 100%);
+  color: var(--light);
+}
+
+.stage {
+  position: relative;
+  display: grid;
+  min-height: 100dvh;
+  place-items: center;
+  padding: clamp(16px, 4vw, 28px);
+  isolation: isolate;
+}
+
+.intro,
+.surprise {
+  position: relative;
+  grid-area: 1 / 1;
+  z-index: 2;
+}
+
+.intro {
+  display: grid;
+  place-items: center;
+  transition: opacity 450ms ease, transform 450ms ease;
+}
+
+.intro.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.95);
+}
+
+.open-button {
+  border: 0;
+  cursor: pointer;
+  font: inherit;
+}
+
+.letter-button {
+  position: relative;
+  width: min(72vw, 270px);
+  aspect-ratio: 1.55;
+  padding: 0;
+  background: transparent;
+  filter: drop-shadow(0 28px 58px rgba(255, 42, 112, 0.42));
+  animation: letter-shake 1.55s ease-in-out infinite;
+  transform-origin: center bottom;
+}
+
+.letter-button:hover,
+.letter-button:focus-visible {
+  animation-duration: 0.85s;
+}
+
+.letter-button:focus-visible {
+  outline: 3px solid rgba(255, 242, 247, 0.9);
+  outline-offset: 12px;
+}
+
+.letter-button-back,
+.letter-button-front,
+.letter-button-flap {
+  position: absolute;
+  inset: 0;
+  border-radius: 8px;
+}
+
+.letter-button-back {
+  background: linear-gradient(135deg, #ffd1dc, #ff8ab3);
+}
+
+.letter-button-front {
+  background:
+    linear-gradient(32deg, transparent 49%, rgba(255, 255, 255, 0.34) 50%, transparent 51%),
+    linear-gradient(-32deg, transparent 49%, rgba(255, 255, 255, 0.34) 50%, transparent 51%),
+    linear-gradient(135deg, #ff8ab3, #ff4f86);
+  clip-path: polygon(0 38%, 50% 76%, 100% 38%, 100% 100%, 0 100%);
+  z-index: 3;
+}
+
+.letter-button-flap {
+  background: linear-gradient(135deg, #ffb0cc, #ff5f93);
+  clip-path: polygon(0 0, 100% 0, 50% 68%);
+  z-index: 4;
+}
+
+.letter-button-heart {
+  position: absolute;
+  left: 50%;
+  top: 56%;
+  z-index: 5;
+  width: 30px;
+  height: 30px;
+  background: #fff2f7;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.letter-button-heart::before,
+.letter-button-heart::after {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: inherit;
+  content: "";
+}
+
+.letter-button-heart::before {
+  left: -15px;
+}
+
+.letter-button-heart::after {
+  top: -15px;
+}
+
+.surprise {
+  display: grid;
+  width: min(94vw, 680px);
+  justify-items: center;
+  text-align: center;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(18px) scale(0.96);
+  transition: opacity 700ms ease, transform 700ms ease;
+  perspective: 1200px;
+}
+
+.surprise.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
+}
+
+.letter-envelope {
+  position: relative;
+  width: min(82vw, 420px);
+  height: 245px;
+  margin-bottom: -170px;
+  filter: drop-shadow(0 28px 60px rgba(255, 42, 112, 0.38));
+  opacity: 0;
+  transform: translateY(36px) scale(0.82);
+  transform-style: preserve-3d;
+  transition: opacity 500ms ease, transform 700ms ease;
+}
+
+.surprise.is-visible .letter-envelope {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.envelope-back,
+.envelope-front,
+.envelope-flap {
+  position: absolute;
+  inset: 0;
+  border-radius: 8px;
+}
+
+.envelope-back {
+  background: linear-gradient(135deg, #ffd1dc, #ff8ab3);
+}
+
+.envelope-front {
+  background:
+    linear-gradient(32deg, transparent 49%, rgba(255, 255, 255, 0.34) 50%, transparent 51%),
+    linear-gradient(-32deg, transparent 49%, rgba(255, 255, 255, 0.34) 50%, transparent 51%),
+    linear-gradient(135deg, #ff8ab3, #ff4f86);
+  clip-path: polygon(0 38%, 50% 76%, 100% 38%, 100% 100%, 0 100%);
+  z-index: 3;
+}
+
+.envelope-flap {
+  background: linear-gradient(135deg, #ffb0cc, #ff5f93);
+  clip-path: polygon(0 0, 100% 0, 50% 68%);
+  transform-origin: top;
+  z-index: 4;
+  transition: transform 900ms cubic-bezier(0.18, 0.95, 0.26, 1);
+}
+
+.surprise.is-open .envelope-flap {
+  transform: rotateX(180deg);
+}
+
+.letter-card {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  width: min(92vw, 620px);
+  justify-items: center;
+  padding: clamp(18px, 4vw, 30px);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: 8px;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.88), rgba(255, 242, 247, 0.9)),
+    repeating-linear-gradient(0deg, transparent 0 31px, rgba(255, 138, 179, 0.22) 32px);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.32);
+  color: var(--wine);
+  opacity: 0;
+  transform: translateY(122px) scale(0.88);
+  transition: opacity 450ms ease 250ms, transform 900ms cubic-bezier(0.18, 0.95, 0.26, 1.05) 250ms;
+}
+
+.surprise.is-open .letter-card {
+  opacity: 1;
+  transform: translateY(-26px) scale(1);
+}
+
+.photo-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  margin-bottom: 20px;
+  border: 8px solid #fff;
+  border-radius: 8px;
+  background: #fff2f7;
+  box-shadow: 0 18px 45px rgba(96, 21, 52, 0.24);
+  overflow: hidden;
+}
+
+.photo-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 650ms ease, transform 900ms ease;
+  will-change: opacity, transform;
+}
+
+.photo-frame img.is-changing {
+  opacity: 0.88;
+  transform: scale(1.08);
+}
+
+.photo-frame img.is-fading {
+  opacity: 0;
+  transform: scale(0.96);
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  color: var(--rose);
+  font-size: 0.86rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+h1 {
+  max-width: 100%;
+  margin: 0;
+  overflow-wrap: anywhere;
+  font-size: clamp(2.2rem, 8vw, 5.8rem);
+  line-height: 0.95;
+  text-shadow: 0 14px 42px rgba(0, 0, 0, 0.38);
+}
+
+.message {
+  max-width: 38rem;
+  margin: 22px 0 0;
+  color: rgba(96, 21, 52, 0.78);
+  font-size: clamp(1rem, 3vw, 1.2rem);
+  line-height: 1.6;
+}
+
+.hearts {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.floating-heart {
+  position: absolute;
+  bottom: -40px;
+  width: var(--size);
+  height: var(--size);
+  background: rgba(255, 118, 166, var(--alpha));
+  transform: rotate(45deg);
+  animation: float-heart var(--duration) linear var(--delay) infinite;
+}
+
+.floating-heart::before,
+.floating-heart::after {
+  position: absolute;
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+  background: inherit;
+  content: "";
+}
+
+.floating-heart::before {
+  left: calc(var(--size) * -0.5);
+}
+
+.floating-heart::after {
+  top: calc(var(--size) * -0.5);
+}
+
+@keyframes float-heart {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 0, 0) rotate(45deg) scale(0.7);
+  }
+
+  12%,
+  84% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(var(--drift), -112vh, 0) rotate(45deg) scale(1);
+  }
+}
+
+@keyframes letter-shake {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg) scale(1);
+  }
+
+  12% {
+    transform: translateY(-7px) rotate(-4deg) scale(1.02);
+  }
+
+  24% {
+    transform: translateY(2px) rotate(4deg) scale(1);
+  }
+
+  36% {
+    transform: translateY(-4px) rotate(-3deg) scale(1.01);
+  }
+
+  48% {
+    transform: translateY(1px) rotate(2deg) scale(1);
+  }
+
+  60%,
+  84% {
+    transform: translateY(0) rotate(0deg) scale(1);
+  }
+}
+
+@media (max-width: 640px) {
+  .stage {
+    align-items: start;
+    padding: 16px;
+  }
+
+  .intro {
+    min-height: calc(100dvh - 32px);
+  }
+
+  .surprise {
+    width: 100%;
+    padding: 14px 0 24px;
+  }
+
+  .letter-envelope {
+    width: min(82vw, 310px);
+    height: 182px;
+    margin-bottom: -124px;
+  }
+
+  .letter-card {
+    width: min(100%, 430px);
+    padding: 16px;
+    transform: translateY(96px) scale(0.9);
+  }
+
+  .surprise.is-open .letter-card {
+    transform: translateY(-18px) scale(1);
+  }
+
+  .photo-frame {
+    aspect-ratio: 1 / 1;
+    border-width: 6px;
+    margin-bottom: 16px;
+  }
+
+  .letter-button {
+    width: min(76vw, 240px);
+  }
+
+  .letter-button-heart,
+  .letter-button-heart::before,
+  .letter-button-heart::after {
+    width: 24px;
+    height: 24px;
+  }
+
+  .letter-button-heart::before {
+    left: -12px;
+  }
+
+  .letter-button-heart::after {
+    top: -12px;
+  }
+
+  .eyebrow {
+    font-size: 0.74rem;
+  }
+
+  h1 {
+    font-size: clamp(2rem, 14vw, 3.4rem);
+  }
+
+  .message {
+    margin-top: 14px;
+    font-size: 0.98rem;
+    line-height: 1.5;
+  }
+
+  .album-controls {
+    gap: 14px;
+    margin-top: 18px;
+  }
+
+  .album-controls button {
+    width: 48px;
+    height: 48px;
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 380px) {
+  .stage {
+    padding: 12px;
+  }
+
+  .intro {
+    min-height: calc(100dvh - 24px);
+  }
+
+  .letter-envelope {
+    width: min(84vw, 280px);
+    height: 164px;
+    margin-bottom: -112px;
+  }
+
+  .letter-card {
+    padding: 12px;
+  }
+
+  .photo-frame {
+    border-width: 5px;
+  }
+
+  h1 {
+    font-size: clamp(1.8rem, 13vw, 3rem);
+  }
+}
+
+@media (max-height: 620px) and (max-width: 900px) {
+  .stage {
+    align-items: start;
+    padding-block: 12px;
+  }
+
+  .intro {
+    min-height: calc(100dvh - 24px);
+  }
+
+  .letter-button {
+    width: min(52vw, 220px);
+  }
+
+  .letter-envelope {
+    width: min(58vw, 280px);
+    height: 164px;
+    margin-bottom: -112px;
+  }
+
+  .letter-card {
+    width: min(88vw, 520px);
+    padding: 12px;
+  }
+
+  .photo-frame {
+    max-height: 42dvh;
+  }
+
+  h1 {
+    font-size: clamp(1.8rem, 7vw, 3rem);
+  }
+
+  .message {
+    margin-top: 10px;
+  }
+
+  .album-controls {
+    margin-top: 12px;
+  }
+}
+
+.album-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-top: 24px;
+  z-index: 999;
+}
+
+.album-controls button {
+  width: 55px;
+  height: 55px;
+  border: none;
+  border-radius: 50%;
+  background: var(--rose);
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0 10px 25px rgba(255, 79, 134, 0.4);
+}
+
+.album-controls button:hover {
+  transform: scale(1.1);
+  background: #ff2e70;
+}

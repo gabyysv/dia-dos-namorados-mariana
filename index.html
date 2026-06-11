@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Feliz Dia dos Namorados</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <main class="stage" aria-label="Mensagem de Dia dos Namorados">
+      <div class="hearts" aria-hidden="true"></div>
+      <audio id="bgMusic" src="imagens/Ara Ketu - Sempre Será (Áudio Oficial) - AraketuVEVO (youtube).mp3" preload="auto" loop></audio>
+
+      <section class="intro" id="intro">
+        <button class="open-button letter-button" id="openButton" type="button" aria-label="Abrir surpresa">
+          <span class="letter-button-back" aria-hidden="true"></span>
+          <span class="letter-button-flap" aria-hidden="true"></span>
+          <span class="letter-button-front" aria-hidden="true"></span>
+          <span class="letter-button-heart" aria-hidden="true"></span>
+        </button>
+      </section>
+
+      <section class="surprise" id="surprise" aria-live="polite">
+        <div class="letter-envelope" aria-hidden="true">
+          <div class="envelope-back"></div>
+          <div class="envelope-flap"></div>
+          <div class="envelope-front"></div>
+        </div>
+
+        <div class="letter-card">
+          <div class="photo-frame">
+            <img src="imagens/foto1.webp" id="personPhoto" alt="Foto da pessoa amada">
+          </div>
+
+          <p class="eyebrow">Feliz Dia dos Namorados</p>
+          <h1 id="personName">Meu amor</h1>
+          <p class="message" id="messageText">
+            Que esse carinho chegue como um abra&ccedil;o: simples, bonito e cheio de amor.
+          </p>
+
+          <div class="album-controls">
+            <button id="prevBtn" type="button" aria-label="Foto anterior">&larr;</button>
+            <button id="nextBtn" type="button" aria-label="Proxima foto">&rarr;</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
